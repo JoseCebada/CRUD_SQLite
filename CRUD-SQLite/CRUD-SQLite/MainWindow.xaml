@@ -1,0 +1,139 @@
+﻿<Window x:Class="CRUD_SQLite.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRUD_SQLite"
+        mc:Ignorable="d"
+        Title="Lobby" Height="1080" Width="1920" WindowState="Maximized">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/Cosmos.jpg"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="MyMusicList " Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="BlueViolet" FontSize="40"/>
+        <ComboBox Grid.Row="1" FontSize="18" Name="cbMostrar" Width="230" Margin="73,17,0,17" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left">
+            <ComboBoxItem Content="Mostrar..." Selector.IsSelected="True"/>
+            <ComboBoxItem Content="Géneros" />
+            <ComboBoxItem Content="Listas de reproduccion" />
+            <ComboBoxItem Content="Todas las canciones" />
+        </ComboBox>
+        <Button x:Name="btnMostrar" Grid.Column="0" Grid.Row="1" FontSize="18" Content="Elegir" HorizontalAlignment="Left" Height="30" Width="90" Click="Button_Click" Margin="306,17,0,17"/>
+        <ComboBox Visibility="Hidden" Grid.Row="2" FontSize="18" Name="cbGeneros" Width="230" Margin="67,17,168,17" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center">
+            <ComboBoxItem Content="Género a mostrar..." Selector.IsSelected="True"/>
+            <ComboBoxItem Content="Rock"/>
+            <ComboBoxItem Content="Pop"/>
+            <ComboBoxItem Content="Hip-Hop"/>
+            <ComboBoxItem Content="Jazz"/>
+            <ComboBoxItem Content="Punk"/>
+            <ComboBoxItem Content="Soul"/>
+            <ComboBoxItem Content="Eléctrica"/>
+            <ComboBoxItem Content="Oriental"/>
+            <ComboBoxItem Content="Orquesta"/>
+            <ComboBoxItem Content="Banda"/>
+            <ComboBoxItem Content="Reguetón"/>
+        </ComboBox>
+        <ComboBox Visibility="Hidden" Grid.Row="2" FontSize="18" Name="cbListas" Width="230" Margin="67,17,168,17" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left">
+            <ComboBoxItem Content="Lista a mostrar..." Selector.IsSelected="True"/>
+            <ComboBoxItem Content="Dormir"/>
+            <ComboBoxItem Content="Estudiar"/>
+            <ComboBoxItem Content="Ambiental"/>
+            <ComboBoxItem Content="Fiestas"/>
+            <ComboBoxItem Content="Bailar"/>
+            <ComboBoxItem Content="Anime"/>
+            <ComboBoxItem Content="Series"/>
+            <ComboBoxItem Content="Instrumentos"/>
+        </ComboBox>
+        <Button Visibility="Hidden" Name="btnElegir" Grid.Column="0" Grid.Row="2" Margin="0,16,72,18" FontSize="18" Content="Elegir" HorizontalAlignment="Right" Height="30" Width="90"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="No se encontró música guardada." Name="lbContenido" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="#FFE10000" Margin="5,0,10,0"></Label>
+        <ListView Grid.Row="3" Grid.Column="0" Grid.RowSpan="8" Name="lvMusic" SelectionMode="Single" FontSize="18" Padding="5" Margin="5,0,5,5" SelectionChanged="lvMusic_SelectionChanged" Height="731" VerticalAlignment="Bottom" BorderBrush="#00688CAF">
+            <ListView.Background>
+                <ImageBrush ImageSource="Resources/Cosmos.jpg"/>
+            </ListView.Background>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <WebBrowser Visibility="Hidden" Grid.Row="3" Grid.Column="1" Grid.RowSpan="8" Grid.ColumnSpan="6" Name="wbVideo" Width="1080" Height="720" VerticalAlignment="Bottom"/>
+        <TextBlock Grid.Row="4" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Name="txtId" Text="Id: " Background="White" Opacity="0.5" Margin="0,55,29,11" Width="31"/>
+        <TextBox Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" Name="tbId" Opacity="0.4" Margin="104,90,0,59" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBlock Grid.Row="5" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Name="txtTitulo" Text="Titulo: " Background="White" Opacity="0.5" Margin="0,79,140,78" Grid.RowSpan="2"/>
+        <TextBox Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Name="tbTitulo" Opacity="0.4" Margin="224,20,0,37" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Row="5" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Name="txtArtista" Text="Artista: " Background="White" Opacity="0.5" Margin="0,81,10,77" Grid.RowSpan="2"/>
+        <TextBox Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left" Name="tbArtista" Opacity="0.4" Margin="104,20,0,37" Grid.ColumnSpan="2"/>
+        <ComboBox Grid.Row="6" Grid.Column="4" FontSize="18" Name="cbAddGeneros" Width="212" Margin="0,20,131,37" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Opacity="0.4" Height="35" Grid.ColumnSpan="2">
+            <ComboBoxItem Content="Género de la canción..." Selector.IsSelected="True"/>
+            <ComboBoxItem Content="Rock"/>
+            <ComboBoxItem Content="Pop"/>
+            <ComboBoxItem Content="Hip-Hop"/>
+            <ComboBoxItem Content="Jazz"/>
+            <ComboBoxItem Content="Punk"/>
+            <ComboBoxItem Content="Soul"/>
+            <ComboBoxItem Content="Eléctrica"/>
+            <ComboBoxItem Content="Oriental"/>
+            <ComboBoxItem Content="Orquesta"/>
+            <ComboBoxItem Content="Banda"/>
+            <ComboBoxItem Content="Reguetón"/>
+        </ComboBox>
+        <ComboBox Grid.Row="7" Grid.Column="1" FontSize="18" Name="cbAddToLista" Width="200" Margin="224,17,0,40" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Opacity="0.4" Height="35" SelectionChanged="CbAddToLista_SelectionChanged" Grid.ColumnSpan="2">
+            <ComboBoxItem Content="Agregar a lista..." Selector.IsSelected="True"/>
+            <ComboBoxItem Content="Dormir"/>
+            <ComboBoxItem Content="Estudiar"/>
+            <ComboBoxItem Content="Ambiental"/>
+            <ComboBoxItem Content="Fiestas"/>
+            <ComboBoxItem Content="Bailar"/>
+            <ComboBoxItem Content="Anime"/>
+            <ComboBoxItem Content="Series"/>
+            <ComboBoxItem Content="Instrumentos"/>
+        </ComboBox>
+        <TextBlock Grid.Row="7" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="txtLink" Text="Link: " Background="White" Opacity="0.5" Margin="223,17,0,45" Height="30" Grid.ColumnSpan="2"/>
+        <TextBox Grid.Row="7" Grid.Column="3" HorizontalAlignment="Center" Width="636" Grid.ColumnSpan="3" Name="tbLink" Opacity="0.4" Margin="28,17,131,40"/>
+        <Button Grid.Row="9" Grid.Column="1" Name="btnAdd" Content="Agregar" FontSize="25" Width="220" Height="60" Margin="0,1,54,31" Background="#400000" Foreground="White" HorizontalAlignment="Right" Click="BtnNuevo_Click" Grid.ColumnSpan="2" />
+        <Button Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="2" Name="btnEditar" Content="Editar" FontSize="25" Width="220" Height="60" Margin="89,1,188,31" Background="#400000" Foreground="White" Click="BtnEditar_Click" />
+        <Button Grid.Row="9" Grid.Column="4" Name="btnEliminar" Content="Eliminar" FontSize="25" Width="220" Height="60" Margin="204,1,0,31" Background="#400000" Foreground="White" HorizontalAlignment="Left" Click="BtnEliminar_Click" Grid.ColumnSpan="2" />
+
+        <Button Visibility="Visible" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="2" Name="btnAddLista" Content="Agregar lista de reproducción" FontSize="25" Width="350" Height="50" Margin="28,10,119,32" Background="#400000" Foreground="White"/>
+        <TextBox Visibility="Hidden" Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" Name="tbNewList"/>
+        <Button Visibility="Hidden" Grid.Row="9" Grid.Column="4" HorizontalAlignment="Left" Name="btnAddList" Content="Agregar" FontSize="25" Height="45" Margin="155,16,0,16" Background="#400000" Foreground="White"/>
+
+        <Button Grid.Row="11" Grid.Column="3" Grid.ColumnSpan="2" Name="btnSalir" Content="Salir" FontSize="25" Width="220" Margin="89,5,188,5" Background="#400000" Foreground="Bisque" Click="BtnSalir_Click" />
+        <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Name="btnView" Content="Modo Visualización" FontSize="30" Width="290" Margin="93,5,114,5" Background="#400000" Foreground="Bisque" Click="BtnView_Click" />
+        <Button Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Name="btnEdit" Content="Modo Edición" FontSize="30" Width="290" Margin="63,5,193,5" Background="#400000" Foreground="Bisque" Click="BtnEdit_Click" />
+    </Grid>
+</Window>
