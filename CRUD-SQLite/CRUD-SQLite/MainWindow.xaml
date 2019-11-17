@@ -19,7 +19,7 @@
     </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="Resources/Cosmos.jpg"/>
+            <ImageBrush ImageSource="Resources/Dark.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>

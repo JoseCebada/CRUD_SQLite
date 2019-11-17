@@ -147,6 +147,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Music.mdf</DependentUpon>
     </Content>
+    <Resource Include="Resources\Dark.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
