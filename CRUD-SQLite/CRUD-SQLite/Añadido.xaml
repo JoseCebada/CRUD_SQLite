@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRUD_SQLite"
         mc:Ignorable="d"
-        Title="Añadido exitosamente" Height="100" Width="260" x:Name="Add" Closing="Add_Closing_1">
+        Title="Añadido exitosamente" Height="100" Width="300" x:Name="Add" Closing="Add_Closing_1">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="Ad" HorizontalAlignment="Left" Margin="10,26,0,0" TextWrapping="Wrap" Text="Canción añadida exitosamente" VerticalAlignment="Top" TextAlignment="Center" FontSize="16" FontFamily="Tahoma" FontStretch="UltraCondensed"  Width="222" Foreground="#FFF53800" Height="19" Grid.ColumnSpan="2"/>
-
+        <TextBlock x:Name="Added" HorizontalAlignment="Center" Margin="10,24,0,0" TextWrapping="Wrap" Text="Canción añadida exitosamente" VerticalAlignment="Top" TextAlignment="Center" FontSize="16" FontFamily="Tahoma" FontStretch="UltraCondensed"  Width="222" Foreground="#FFF53800" Height="19" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="Deleted" HorizontalAlignment="Center" Margin="40,24,30,0" TextWrapping="Wrap" Text="Canción añadida exitosamente" VerticalAlignment="Top" TextAlignment="Center" FontSize="16" FontFamily="Tahoma" FontStretch="UltraCondensed"  Width="222" Foreground="#FFF53800" Height="19" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

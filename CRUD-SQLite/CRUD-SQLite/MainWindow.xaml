@@ -148,7 +148,7 @@
             <Button Name="btnEliminar" Content="Eliminar" FontSize="25" Width="220" Height="60" Background="#400000" Margin="20" Foreground="White" HorizontalAlignment="Center" Click="BtnEliminar_Click" Grid.ColumnSpan="2" />
         </StackPanel>
 
-        <StackPanel Visibility="Visible" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="4" Name="spDelete">
+        <StackPanel Visibility="Hidden" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="4" Name="spDelete">
             <TextBlock Name="txtCancion" Text="Canción:" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Background="White" Opacity="0.4"/>
             <TextBox Name="tbCancionDelete" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Background="White" Opacity="0.4"/>
             <Button Grid.Row="9" Grid.Column="4" Name="btnDelete" Content="Eliminar" FontSize="25" Width="220" Margin="50" Height="60" Background="#400000" Foreground="White" HorizontalAlignment="Center" Click="BtnDelete_Click"/>

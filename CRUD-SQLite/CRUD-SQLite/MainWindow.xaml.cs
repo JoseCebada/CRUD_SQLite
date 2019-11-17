@@ -44,7 +44,7 @@ namespace CRUD_SQLite
 
         private void BtnEditar_Click(object sender, RoutedEventArgs e)
         {
-            spDelete.Visibility = Visibility.Visible;
+            MessageBox.Show("Este botón se encuentra inhabiliado actualmente.");
         }
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
@@ -131,11 +131,11 @@ namespace CRUD_SQLite
         {
             Canciones songs = new Canciones()
             {
-                Nombre = tbTitulo.Text,
-                Artista = tbArtista.Text,
-                Genero = cbAddGeneros.Text,
-                Lista = cbAddToLista.Text,
-                Link = tbLink.Text
+                Nombre = tbTitulo.Text.Trim(),
+                Artista = tbArtista.Text.Trim(),
+                Genero = cbAddGeneros.Text.Trim(),
+                Lista = cbAddToLista.Text.Trim(),
+                Link = tbLink.Text.Trim()
             };
             using (SQLiteConnection conexion = new SQLiteConnection(App.databasePath))
             {
@@ -143,7 +143,9 @@ namespace CRUD_SQLite
                 conexion.Insert(songs);
             }
             Añadido add = new Añadido();
-            add.Ad.Text = "Canción agregada exitosamente.";
+            add.Added.Visibility = Visibility.Visible;
+            add.Added.Visibility = Visibility.Hidden;
+            add.Title = "Añadiendo";
             add.Show();
             Close();
             this.Hide();
@@ -157,7 +159,9 @@ namespace CRUD_SQLite
                 conexion.Execute(sentenciaSQL);
             }
             Añadido add = new Añadido();
-            add.Ad.Text = "Canción eliminada exitosamente.";
+            add.Added.Visibility = Visibility.Hidden;
+            add.Added.Visibility = Visibility.Visible;
+            add.Title = "Eliminando.";
             add.Show();
             Close();
             this.Hide();
